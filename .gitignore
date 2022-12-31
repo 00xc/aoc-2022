@@ -1,0 +1,6 @@
+**/input.txt
+**/inp.txt
+**/target/
+**/debug/
+**/Cargo.lock
+**/*.rs.bk
