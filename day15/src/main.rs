@@ -151,10 +151,10 @@ fn part1<const ROW: isize>(sensors: &[Sensor]) -> isize {
 }
 
 fn part2<const LIM: isize>(sensors: &[Sensor]) -> usize {
-	for y in 0..=LIM {
-		let mut segments = Vec::with_capacity(4);
-		segments.push(Line { start: 0, end: LIM });
+	let mut segments = Vec::with_capacity(4);
 
+	for y in 0..=LIM {
+		segments.push(Line { start: 0, end: LIM });
 		for sensor in sensors.iter() {
 			if let Some(cv) = sensor.coverage_at(y) {
 				cv.non_overlap(&mut segments);
@@ -168,6 +168,8 @@ fn part2<const LIM: isize>(sensors: &[Sensor]) -> usize {
 			assert_eq!(segments.len(), 1);
 			return (segments[0].start * 4000000 + y) as usize;
 		}
+
+		segments.clear();
 	}
 
 	unreachable!()
